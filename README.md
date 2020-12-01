@@ -81,7 +81,7 @@ logger.error('Hi, i am error');
 ```javascript
 import { Logger, Level } from '@jerryc/mini-logger';
 const userLogger = new Logger({
-  prefix: 'user-services',
+  prefix: 'user-services',
 });
 
 const goodsLogger = new Logger({
@@ -125,3 +125,11 @@ logger.info('hi, i am info');
 
 // 输出：{ level: 3, args: [ 'hi, i am info' ] }
 ```
+
+## API
+
+详见：https://jerryc8080.github.io/mini-logger/
+
+## 测试覆盖率
+
+详见：https://jerryc8080.github.io/mini-logger/coverages

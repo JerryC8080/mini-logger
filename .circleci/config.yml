@@ -46,7 +46,7 @@ jobs:
       - store_artifacts:
           path: ./reports/ava.xml
 
-  test-coverage:
+  build-coverage:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -55,12 +55,20 @@ jobs:
           name: Test Coverage
           command: npm run cov
       - run:
-          name: Report for coveralls
+          name: Copy to docs folder
           command: |
-            npm install coveralls --save-dev
-            ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls
+            cp -rf coverage/* docs/coverage
       - store_artifacts:
           path: coverage
+
+  build-docs: 
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Build Docs
+          command: npm run doc:html
 
   eslint:
     <<: *defaults
@@ -81,7 +89,7 @@ jobs:
           name: Publish package
           command: npm publish
 
-  gh-pages:
+  publish-docs:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -97,10 +105,16 @@ workflows:
       - test:
           requires:
             - build
-      - test-coverage:
+      - eslint:
           requires:
             - build
-      - eslint:
+      - build-docs:
+            requires:
+              - build
+      - build-coverage:
+          requires:
+            - build
+      - publish-docs:
           requires:
             - build
       - deploy:
@@ -113,6 +127,4 @@ workflows:
               only: /^v.*/
             branches:
               only: master
-      - gh-pages:
-          requires:
-            - build
+

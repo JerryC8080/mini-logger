@@ -10,3 +10,4 @@ tsconfig.json
 tsconfig.module.json
 .vscode
 .github
+docs

@@ -7,7 +7,7 @@
 一个迷你小 Logger，它可以：
 
 1. 提供最小的 4 个 log level，你可以根据不同需要来控制日志输出 level。
-2. 提供 `onLog` 钩子， 方便你扩展你需要的逻辑。
+2. 提供 `onLog` 钩子, 方便你扩展你需要的逻辑。
 3. 以及提供 `prefix`, `title template` 来个性化输出的日志样式。
 
 ## Quick Usage

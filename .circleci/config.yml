@@ -54,10 +54,10 @@ jobs:
       - run:
           name: Test Coverage
           command: npm run cov
-      - run:
-          name: Copy to docs folder
-          command: |
-            cp -rf coverage/* docs/coverage
+      # - run:
+      #     name: Copy to docs folder
+      #     command: |
+      #       cp -rf coverage/* docs/coverage
       - persist_to_workspace:
           root: /
           paths:

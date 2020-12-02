@@ -57,6 +57,7 @@ jobs:
       - run:
           name: Copy to docs folder
           command: |
+            mkdir docs/coverage
             cp -rf coverage/* docs/coverage
       - store_artifacts:
           path: coverage

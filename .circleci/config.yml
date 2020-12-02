@@ -58,8 +58,10 @@ jobs:
           name: Copy to docs folder
           command: |
             cp -rf coverage/* docs/coverage
-      - store_artifacts:
-          path: coverage
+      - persist_to_workspace:
+          root: /
+          paths:
+            - coverage
 
   build-docs: 
     <<: *defaults
@@ -69,8 +71,10 @@ jobs:
       - run:
           name: Build Docs
           command: npm run doc:html
-      - store_artifacts:
-          path: docs
+      - persist_to_workspace:
+          root: /
+          paths:
+            - docs
 
   eslint:
     <<: *defaults

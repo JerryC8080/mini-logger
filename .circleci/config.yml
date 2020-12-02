@@ -54,10 +54,6 @@ jobs:
       - run:
           name: Test Coverage
           command: npm run cov
-      # - run:
-      #     name: Copy to docs folder
-      #     command: |
-      #       cp -rf coverage/* docs/coverage
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -100,6 +96,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - run:
+          name: Copy to docs folder
+          command: cp -rf coverage/* docs/coverage
       - run:
           name: Publish to gh-pages
           command: npm run doc:publish

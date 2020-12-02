@@ -96,12 +96,20 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - run: 
+          name: Show coverage
+          command: ls coverage
+      - run: 
+          name: Show docs
+          command: ls docs
       - run:
           name: Copy to docs folder
-          # command: cp -rf coverage/* docs/coverage
           command: |
-            ls coverage
-            ls docs
+            mkdir docs/coverage
+            cp -rf coverage/* docs/coverage
+      - run: 
+            name: Show coverage
+            command: ls coverage
       - run:
           name: Publish to gh-pages
           command: npm run doc:publish

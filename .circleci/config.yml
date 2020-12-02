@@ -98,7 +98,10 @@ jobs:
           at: ~/repo
       - run:
           name: Copy to docs folder
-          command: cp -rf coverage/* docs/coverage
+          # command: cp -rf coverage/* docs/coverage
+          command: |
+            ll coverage
+            ll docs
       - run:
           name: Publish to gh-pages
           command: npm run doc:publish

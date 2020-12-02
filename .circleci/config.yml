@@ -59,7 +59,7 @@ jobs:
       #     command: |
       #       cp -rf coverage/* docs/coverage
       - persist_to_workspace:
-          root: /
+          root: ~/repo
           paths:
             - coverage/*
 
@@ -72,7 +72,7 @@ jobs:
           name: Build Docs
           command: npm run doc:html
       - persist_to_workspace:
-          root: /
+          root: ~/repo
           paths:
             - docs/*
 

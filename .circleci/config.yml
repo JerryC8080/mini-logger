@@ -108,8 +108,8 @@ jobs:
             mkdir docs/coverage
             cp -rf coverage/* docs/coverage
       - run: 
-            name: Show coverage
-            command: ls coverage
+          name: Show docs
+          command: ls docs
       - run:
           name: Publish to gh-pages
           command: npm run doc:publish

@@ -125,14 +125,14 @@ workflows:
             - build
             - build-docs
             - build-coverage
-      - deploy:
-          requires:
-            - build
-            - test
-            - eslint
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              only: master
+      # - deploy:
+      #     requires:
+      #       - build
+      #       - test
+      #       - eslint
+      #     filters:
+      #       tags:
+      #         only: /^v.*/
+      #       branches:
+      #         only: master
 

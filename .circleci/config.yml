@@ -115,6 +115,7 @@ workflows:
       - build-coverage:
           requires:
             - build
+            - build-docs
       - publish-docs:
           requires:
             - build

@@ -116,15 +116,24 @@ workflows:
       - build-docs:
           requires:
             - build
+          filters:
+              branches:
+                only: master
       - build-coverage:
           requires:
             - build
             - build-docs
+          filters:
+              branches:
+                only: master
       - publish-docs:
           requires:
             - build
             - build-docs
             - build-coverage
+          filters:
+            branches:
+              only: master
       # - deploy:
       #     requires:
       #       - build

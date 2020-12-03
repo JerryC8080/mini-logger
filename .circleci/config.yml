@@ -46,6 +46,22 @@ jobs:
       - store_artifacts:
           path: ./reports/ava.xml
 
+  upload-coveralls:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Test Coverage
+          command: npm run cov
+      - run:
+          name: Report for coveralls
+          command: |
+            npm install coveralls --save-dev
+            ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls
+      - store_artifacts:
+          path: coverage
+
   build-coverage:
     <<: *defaults
     steps:
@@ -132,6 +148,9 @@ workflows:
       - test:
           requires:
             - build
+      - upload-coveralls:
+          requires:
+            - build
       - eslint:
           requires:
             - build
@@ -156,14 +175,14 @@ workflows:
           filters:
             branches:
               only: master
-      # - deploy:
-      #     requires:
-      #       - build
-      #       - test
-      #       - eslint
-      #     filters:
-      #       tags:
-      #         only: /^v.*/
-      #       branches:
-      #         only: master
+      - deploy:
+          requires:
+            - build
+            - test
+            - eslint
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              only: master
 

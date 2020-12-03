@@ -112,7 +112,7 @@ jobs:
           command: ls docs
       - add_ssh_keys:
           fingerprints:
-            - "b0:e4:cb:e1:98:a3:3a:55:1e:ae:da:0b:78:8a:1f:69"
+            - "79:40:6d:52:fc:9e:8c:ba:07:f3:c7:7e:f3:4b:f0:3d"
       - run:
           name: Publish to gh-pages
           command: npm run doc:publish

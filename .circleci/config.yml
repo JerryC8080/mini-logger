@@ -104,9 +104,9 @@ jobs:
           command: |
             git config --global user.email "huangjerryc@gmail.com"
             git config --global user.name "CircleCI-Robot"
-      - add_ssh_keys:
-          fingerprints:
-            - "28:d6:f6:95:72:5d:94:07:46:ba:e9:d8:8f:c4:32:e2"
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "28:d6:f6:95:72:5d:94:07:46:ba:e9:d8:8f:c4:32:e2"
       - run: 
           name: Show coverage
           command: ls coverage

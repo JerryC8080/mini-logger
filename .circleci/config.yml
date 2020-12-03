@@ -148,12 +148,12 @@ workflows:
       - test:
           requires:
             - build
-      # - upload-coveralls:
-      #     requires:
-      #       - build
-      #     filters:
-      #         branches:
-      #           only: master
+      - upload-coveralls:
+          requires:
+            - build
+          filters:
+              branches:
+                only: master
       - eslint:
           requires:
             - build
@@ -178,14 +178,14 @@ workflows:
           filters:
             branches:
               only: master
-      # - deploy:
-      #     requires:
-      #       - build
-      #       - test
-      #       - eslint
-      #     filters:
-      #       tags:
-      #         only: /^v.*/
-      #       branches:
-      #         only: master
+      - deploy:
+          requires:
+            - build
+            - test
+            - eslint
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              only: master
 

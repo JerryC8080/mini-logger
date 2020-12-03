@@ -98,7 +98,7 @@ jobs:
           at: ~/repo
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:rmCSDfWKdrDix/PHSHE5yBNcBIhQC0eRUkqkkt9hQ30"
+            - "28:d6:f6:95:72:5d:94:07:46:ba:e9:d8:8f:c4:32:e2"
       - run: 
           name: Show coverage
           command: ls coverage

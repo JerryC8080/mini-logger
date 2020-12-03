@@ -91,7 +91,7 @@ jobs:
           name: Publish package
           command: npm publish
 
-  publish-docs:
+  deploy-docs:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -99,6 +99,11 @@ jobs:
       - run:
           name: Avoid hosts unknown for github
           command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
+          name: Set github email and user
+          command: |
+            git config --global user.email "huangjerryc@gmail.com"
+            git config --global user.name "CircleCI-Robot"
       - add_ssh_keys:
           fingerprints:
             - "28:d6:f6:95:72:5d:94:07:46:ba:e9:d8:8f:c4:32:e2"
@@ -143,7 +148,7 @@ workflows:
           filters:
               branches:
                 only: master
-      - publish-docs:
+      - deploy-docs:
           requires:
             - build
             - build-docs

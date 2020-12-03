@@ -96,6 +96,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:rmCSDfWKdrDix/PHSHE5yBNcBIhQC0eRUkqkkt9hQ30"
       - run: 
           name: Show coverage
           command: ls coverage
@@ -110,9 +113,6 @@ jobs:
       - run: 
           name: Show docs
           command: ls docs
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:rmCSDfWKdrDix/PHSHE5yBNcBIhQC0eRUkqkkt9hQ30 huangjerryc@gmail.com"
       - run:
           name: Publish to gh-pages
           command: npm run doc:publish

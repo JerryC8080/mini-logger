@@ -151,6 +151,9 @@ workflows:
       - upload-coveralls:
           requires:
             - build
+          filters:
+              branches:
+                only: master
       - eslint:
           requires:
             - build

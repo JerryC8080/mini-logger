@@ -132,4 +132,4 @@ logger.info('hi, i am info');
 
 ## 测试覆盖率
 
-详见：https://jerryc8080.github.io/mini-logger/coverages
+详见：https://jerryc8080.github.io/mini-logger/
